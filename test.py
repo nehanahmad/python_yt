@@ -162,6 +162,21 @@ def download_video(url):
     with yt_dlp.YoutubeDL(ydl_opts) as ydl :
         ydl.download([url])
 
+
+
+def download_audio_alt(url):
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '128',
+        }],
+        'outtmpl': '%(title)s_alt.%(ext)s',
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+
 ###########################################################################################################################3
 
 
